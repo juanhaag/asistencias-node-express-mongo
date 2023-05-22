@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Asistencias</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css"
+    />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header
+        class="row"
+        style="height: 300px; align-items: center; justify-content: center"
+      >
+        <div class="column" id="nav">
+          <img src="logo.png" alt="" />
+          <h1>Asistencias site</h1>
+        </div>
+      </header>
+      <main class="row">
+        <div class="column">
+          <h2>Buscar alumnos</h2>
+          <input
+            type="text"
+            name=""
+            placeholder="41345789"
+            id="buscarDni"
+            style="width: 75%"
+          />
+          <a class="button" id="btnBuscar">Buscar alumno por DNI</a>
+          <table id="tablaAsistencias">
+            
+          </table>
+        </div>
+        <div class="column">
+          <h2>Dar asistencia</h2>
+          <form>
+            <fieldset>
+              <label for="dniField">DNI</label>
+              <input type="number" id="dniField" required pattern="\d+"  placeholder="4131578" />
+              <label for="nombreField">Nombre y apellido</label>
+              <input type="text" placeholder="John Doe" required pattern="[A-Za-z]+" id="nombreField" />
+              <label for="yearField">Anio cursada</label>
+              <select id="yearField">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select>
+              <label for="materiaField">Materia</label>
+              <select id="materiaField">
+                <option value="ingles 1">Ingles 1</option>
+                <option value="cienciaTecnologia">
+                  Ciencia, Tecnologia y sociedad
+                </option>
+                <option value="analisisMatematico1">
+                  Analisis matematico 1
+                </option>
+                <option value="algebra">Algebra</option>
+                <option value="Algoritmo y estructura de datos 1">
+                  Algoritmo y estructura de datos 1
+                </option>
+                <option value="Sistemas y organizaciones">
+                  Sistemas y organizaciones
+                </option>
+                <option value="Arquitectura de computadores">
+                  Arquitectura de computadores
+                </option>
+                <option value="Practicas profesionalizantes 1">
+                  Practicas profesionalizantes 1
+                </option>
+              </select>
+              <input
+                class="button-primary"
+                type="submit"
+                value="Cargar asistencia"
+                id="btnCargarAsistencia"
+              />
+            </fieldset>
+          </form>
+        </div>
+      </main>
+    </div>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="/main.js"></script>
+  </body>
+</html>

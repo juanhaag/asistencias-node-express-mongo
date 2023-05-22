@@ -1,0 +1,15 @@
+#nav{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#nav img{
+    width: 10em;
+}
+
+@media only screen and (max-width: 600px) {
+    #nav{
+        width: 9em;
+    }
+
+  }
