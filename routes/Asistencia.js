@@ -18,6 +18,7 @@ router.post("/asistencia", async (req, res) => {
   } catch (error) {
     console.log(error);
   }
+  console.log(req.headers['user-agent'],"  ","IP"," ",req.headers['Origin']);
   res.status(200).send("Asistencia cargada!");
 });
 

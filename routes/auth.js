@@ -19,6 +19,10 @@ router.post("/register", async (req, res) => {
   }
 });
 router.post("/login", async (req, res) => {
+  console.log("-----------------------------\nIntento de login");
+  console.log(req.body);
+  console.log("-----------------------------\nIntento de login");
+
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   if (emailRegex.test(req.body.email)) {
     const profesor = await Profesor.findOne({ email: req.body.email });
