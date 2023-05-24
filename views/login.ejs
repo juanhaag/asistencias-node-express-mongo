@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Asistencias</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css"
+    />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+    />
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div class="container login">
+      <div class="row">
+        <div class="column"></div>
+        <div class="column">
+            <div class="logo"><img src="/logo.png" alt="img-logo"></div>
+            
+          <form>
+            <fieldset>
+              <label for="emailField">Email</label>
+              <input type="email" placeholder="example@example.com" id="emailField" />
+              <label for="contraField">Contraseña</label>
+              <input type="password"  id="contraField" />
+              <input class="button-primary" type="submit" id="btn-ingresar" value="Ingresar" />
+            </fieldset>
+          </form>
+        </div>
+        <div class="column"></div>
+      </div>
+    </div>
+    <script src="/login.js"></script>
+  </body>
+</html>

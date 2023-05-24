@@ -1,15 +1,51 @@
-#nav{
+#nav {
     display: flex;
     align-items: center;
     justify-content: center;
 }
-#nav img{
+
+#nav img {
     width: 10em;
 }
+.login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
 
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo img {
+    width: 12em;
+}
+
+/* Dashboard admin */
+.centrar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.centrar-btn{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+nav{
+    display: flex;
+justify-content: center;
+    align-items: center;
+}
+nav img{
+    width: 9em;
+}
 @media only screen and (max-width: 600px) {
-    #nav{
+    #nav {
         width: 9em;
     }
 
-  }
+}

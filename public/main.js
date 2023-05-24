@@ -91,7 +91,7 @@ async function enviarData() {
     dataAsistencia.materia &&
     dataAsistencia.anioCursada
   ) {
-    const response = await fetch("http://localhost:3000/servicios/asistencia", {
+    const response = await fetch("/servicios/asistencia", {
       method: "POST",
       cache: "no-cache",
       credentials: "same-origin",
@@ -132,7 +132,7 @@ document.getElementById("btnBuscar").addEventListener("click", async () => {
   const dni = document.getElementById("buscarDni").value;
   let areaTabla = document.getElementById("tablaAsistencias");
   const response = await fetch(
-    `http://localhost:3000/servicios/buscardni/${dni}`,
+    `/servicios/buscardni/${dni}`,
     {
       method: "get",
       cache: "no-cache",
