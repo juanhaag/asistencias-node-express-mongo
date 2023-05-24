@@ -1,7 +1,7 @@
 document.getElementById("btnTodos").addEventListener("click", async () => {
   const token = localStorage.getItem("token");
   let areaTabla = document.getElementById("tablaAsistencias2");
-  console.log(token);
+
   const response = await fetch(`/servicios/dashboard/todos?token=${token}`, {
     method: "get",
     cache: "no-cache",
@@ -63,7 +63,7 @@ document.getElementById("btnBuscar").addEventListener("click", async () => {
           </tr>
         </thead>
         <tbody>`;
-      data.sort((a,b)=>{
+      data.sort((a, b) => {
         if (a.materia > b.materia) {
           return 1;
         }
@@ -91,4 +91,25 @@ document.getElementById("btnBuscar").addEventListener("click", async () => {
       }).showToast();
     }
   });
+});
+
+document.getElementById("generarCsv").addEventListener("click", async () => {
+  const token = localStorage.getItem("token")
+  console.log(token);
+  fetch("/servicios/dashboard/generarcsv", {
+    headers: {
+      "Content-Type": "application/json",
+      "auth-token": token
+    }
+  })
+    .then((response) => response.blob())
+    .then((blob) => {
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "data.csv";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    });
 });
