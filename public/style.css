@@ -7,6 +7,7 @@
 #nav img {
     width: 10em;
 }
+
 .login {
     display: flex;
     align-items: center;
@@ -25,27 +26,55 @@
 }
 
 /* Dashboard admin */
-.centrar{
+.centrar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+/*  */
+
+#todosAlumnosYpromedio {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* */
+
+nav {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.centrar-btn{
-    display: flex;
-    justify-content: end;
-    align-items: center;
-}
-nav{
-    display: flex;
-justify-content: center;
-    align-items: center;
-}
-nav img{
+
+nav img {
     width: 9em;
 }
+
 @media only screen and (max-width: 600px) {
     #nav {
         width: 9em;
     }
-
+    #buscarUnicoAlumno {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap  ;
+    }
+    #todosAlumnosYpromedio {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    #btnGenerarCsv {
+        display: flex;
+        align-items: center;
+        margin-top: 25px;
+        margin-left: 10px;
+        justify-content: center;
+    } 
 }

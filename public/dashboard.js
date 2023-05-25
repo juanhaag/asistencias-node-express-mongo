@@ -1,22 +1,23 @@
 document.getElementById("btnTodos").addEventListener("click", async () => {
   const token = localStorage.getItem("token");
   let areaTabla = document.getElementById("tablaAsistencias2");
-
-  const response = await fetch(`/servicios/dashboard/todos?token=${token}`, {
-    method: "get",
-    cache: "no-cache",
-    credentials: "same-origin",
-    headers: {
-      "Content-Type": "application/json",
-      // 'Content-Type': 'application/x-www-form-urlencoded',
-    },
-    redirect: "follow",
-    referrerPolicy: "no-referrer",
-  });
-  response.json().then((data) => {
-    console.log(data);
-    if (data.length > 0) {
-      areaTabla.innerHTML = `
+  const promedioCheck = document.getElementById("promedioCheck");
+  if (!promedioCheck.checked) {
+    const response = await fetch(`/servicios/dashboard/todos?token=${token}`, {
+      method: "get",
+      cache: "no-cache",
+      credentials: "same-origin",
+      headers: {
+        "Content-Type": "application/json",
+        // 'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      redirect: "follow",
+      referrerPolicy: "no-referrer",
+    });
+    response.json().then((data) => {
+      console.log(data);
+      if (data.length > 0) {
+        areaTabla.innerHTML = `
           <thead>
             <tr>
               <th>Nombre</th>
@@ -25,18 +26,64 @@ document.getElementById("btnTodos").addEventListener("click", async () => {
             </tr>
           </thead>
           <tbody>`;
-      data.forEach((element) => {
-        areaTabla.innerHTML += `
+        data.forEach((element) => {
+          areaTabla.innerHTML += `
             <tr>
               <td>${element.nombre}</td>
               <td>${element.materia}</td>
               <td>${element.fecha}</td>
             </tr>`;
+        });
+        areaTabla.innerHTML += `</tbody>`;
+      }
+    });
+  } else {
+    traerTodosPresentesConPromedio(token);
+  }
+});
+
+async function traerTodosPresentesConPromedio(token) {
+  let areaTabla = document.getElementById("tablaAsistencias2");
+  const numeroClases = document.getElementById("cantidadClases").value;
+  const response = await fetch(
+    `/servicios/dashboard/todospromedio?numeroclases=${numeroClases}`,
+    {
+      method: "get",
+      cache: "no-cache",
+      credentials: "same-origin",
+      headers: {
+        "Content-Type": "application/json",
+        "auth-token": token,
+        // 'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      redirect: "follow",
+      referrerPolicy: "no-referrer",
+    }
+  );
+  response.json().then((data) => {
+    console.log(data);
+    if (data.length > 0) {
+      areaTabla.innerHTML = `
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>DNI</th>
+              <th>Porcentaje</th>
+            </tr>
+          </thead>
+          <tbody>`;
+      data.forEach((element) => {
+        areaTabla.innerHTML += `
+            <tr>
+              <td>${element.nombre}</td>
+              <td>${element.dni}</td>
+              <td>${element.promedio.toFixed(2)}%</td>
+            </tr>`;
       });
       areaTabla.innerHTML += `</tbody>`;
     }
   });
-});
+}
 
 document.getElementById("btnBuscar").addEventListener("click", async () => {
   const dni = document.getElementById("buscarDni").value;
@@ -47,6 +94,7 @@ document.getElementById("btnBuscar").addEventListener("click", async () => {
     credentials: "same-origin",
     headers: {
       "Content-Type": "application/json",
+      
       // 'Content-Type': 'application/x-www-form-urlencoded',
     },
     redirect: "follow",
@@ -94,13 +142,13 @@ document.getElementById("btnBuscar").addEventListener("click", async () => {
 });
 
 document.getElementById("generarCsv").addEventListener("click", async () => {
-  const token = localStorage.getItem("token")
+  const token = localStorage.getItem("token");
   console.log(token);
   fetch("/servicios/dashboard/generarcsv", {
     headers: {
       "Content-Type": "application/json",
-      "auth-token": token
-    }
+      "auth-token": token,
+    },
   })
     .then((response) => response.blob())
     .then((blob) => {

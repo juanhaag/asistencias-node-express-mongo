@@ -36,5 +36,5 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 app.listen(port, () => {
-  console.log(`Funcionando en http://localhost:${port}`);
+  console.log(`Funcionando en ${process.env.APP_HOST}:${port}`);
 });
