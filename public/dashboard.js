@@ -1,19 +1,26 @@
+
+
 document.getElementById("btnTodos").addEventListener("click", async () => {
   const token = localStorage.getItem("token");
   let areaTabla = document.getElementById("tablaAsistencias2");
   const promedioCheck = document.getElementById("promedioCheck");
+  const materia = document.getElementById("materiaField").value;
   if (!promedioCheck.checked) {
-    const response = await fetch(`/servicios/dashboard/todos?token=${token}`, {
-      method: "get",
-      cache: "no-cache",
-      credentials: "same-origin",
-      headers: {
-        "Content-Type": "application/json",
-        // 'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      redirect: "follow",
-      referrerPolicy: "no-referrer",
-    });
+    const response = await fetch(
+      `/servicios/dashboard/todos?materia=${materia}`,
+      {
+        method: "get",
+        cache: "no-cache",
+        credentials: "same-origin",
+        headers: {
+          "Content-Type": "application/json",
+          "auth-token": token,
+          // 'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        redirect: "follow",
+        referrerPolicy: "no-referrer",
+      }
+    );
     response.json().then((data) => {
       console.log(data);
       if (data.length > 0) {
@@ -26,7 +33,7 @@ document.getElementById("btnTodos").addEventListener("click", async () => {
             </tr>
           </thead>
           <tbody>`;
-        data.forEach((element) => {
+        data[0].forEach((element) => {
           areaTabla.innerHTML += `
             <tr>
               <td>${element.nombre}</td>
@@ -38,32 +45,43 @@ document.getElementById("btnTodos").addEventListener("click", async () => {
       }
     });
   } else {
-    traerTodosPresentesConPromedio(token);
+    traerTodosPresentesConPromedio(token,materia);
   }
 });
 
 async function traerTodosPresentesConPromedio(token) {
   let areaTabla = document.getElementById("tablaAsistencias2");
   const numeroClases = document.getElementById("cantidadClases").value;
-  const response = await fetch(
-    `/servicios/dashboard/todospromedio?numeroclases=${numeroClases}`,
-    {
-      method: "get",
-      cache: "no-cache",
-      credentials: "same-origin",
-      headers: {
-        "Content-Type": "application/json",
-        "auth-token": token,
-        // 'Content-Type': 'application/x-www-form-urlencoded',
+  const materia = document.getElementById("materiaField").value;
+  if (numeroClases =="") {
+    Toastify({
+      text: "Recuerda introducir la cantidad de clases para calcular promedio",
+      className: "info",
+      style: {
+        background: "#8705d5",
       },
-      redirect: "follow",
-      referrerPolicy: "no-referrer",
-    }
-  );
-  response.json().then((data) => {
-    console.log(data);
-    if (data.length > 0) {
-      areaTabla.innerHTML = `
+    }).showToast();
+  } else {
+    console.log(materia);
+    const response = await fetch(
+      `/servicios/dashboard/todospromedio?numeroclases=${numeroClases}&materia=${materia}`,
+      {
+        method: "get",
+        cache: "no-cache",
+        credentials: "same-origin",
+        headers: {
+          "Content-Type": "application/json",
+          "auth-token": token,
+          // 'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        redirect: "follow",
+        referrerPolicy: "no-referrer",
+      }
+    );
+    response.json().then((data) => {
+      console.log(data);
+      if (data.length > 0) {
+        areaTabla.innerHTML = `
           <thead>
             <tr>
               <th>Nombre</th>
@@ -72,17 +90,18 @@ async function traerTodosPresentesConPromedio(token) {
             </tr>
           </thead>
           <tbody>`;
-      data.forEach((element) => {
-        areaTabla.innerHTML += `
+        data.forEach((element) => {
+          areaTabla.innerHTML += `
             <tr>
               <td>${element.nombre}</td>
               <td>${element.dni}</td>
               <td>${element.promedio.toFixed(2)}%</td>
             </tr>`;
-      });
-      areaTabla.innerHTML += `</tbody>`;
-    }
-  });
+        });
+        areaTabla.innerHTML += `</tbody>`;
+      }
+    });
+  }
 }
 
 document.getElementById("btnBuscar").addEventListener("click", async () => {
@@ -94,7 +113,7 @@ document.getElementById("btnBuscar").addEventListener("click", async () => {
     credentials: "same-origin",
     headers: {
       "Content-Type": "application/json",
-      
+
       // 'Content-Type': 'application/x-www-form-urlencoded',
     },
     redirect: "follow",

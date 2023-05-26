@@ -30,7 +30,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    
+
 }
 
 /*  */
@@ -58,23 +58,37 @@ nav img {
     #nav {
         width: 9em;
     }
+
     #buscarUnicoAlumno {
         display: flex;
         justify-content: center;
         align-items: center;
-        flex-wrap: wrap  ;
+        flex-wrap: wrap;
     }
+
     #todosAlumnosYpromedio {
         display: flex;
         align-items: center;
         flex-wrap: wrap;
         justify-content: center;
     }
+
     #btnGenerarCsv {
         display: flex;
         align-items: center;
         margin-top: 25px;
         margin-left: 10px;
         justify-content: center;
-    } 
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    #todosAlumnosYpromedio {
+        display: inline-block;
+    }
+    #promedioYbtnTodos{
+        display: flex;
+        justify-content: start;
+        align-items: center;
+    }
 }

@@ -24,6 +24,11 @@
       type="text/css"
       href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
     />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+    />
     <link rel="stylesheet" href="/style.css" />
   </head>
   <body>
@@ -31,20 +36,20 @@
       <header class="row centrar">
         <nav>
           <img src="/logo.png" alt="Logo" />
-          <a href="http://127.0.0.1:3000/"
-            ><h2>Bienvenido <span><%= titulo %></span></h2></a
-          >
+          <a href="http://127.0.0.1:3000/">
+            <h2>Bienvenido <span><%= titulo %></span></h2>
+          </a>
         </nav>
       </header>
       <main class="row">
         <div class="column" id="buscarUnicoAlumno">
           <input
-            type="text"
-            name=""
+            type="number"
             placeholder="41345789"
             id="buscarDni"
             style="width: 75%"
-          /><button class="button button" id="btnBuscar">Buscar por DNI</button>
+          />
+          <button class="button button" id="btnBuscar">Buscar por DNI</button>
           <table id="tablaAsistencias1"></table>
         </div>
         <hr />
@@ -56,26 +61,26 @@
             id="cantidadClases"
             style="width: 75%"
           />
-          <select id="materiaField">
-            <option value="ingles 1">Ingles 1</option>
-            <option value="cienciaTecnologia">
-              Ciencia, Tecnologia y sociedad
-            </option>
+          <select id="materiaField" style="width: 75%">
+            <% for (let i = 0; i < materias.length; i++) { %>
+            <option value="<%= materias[i] %>"><%= materias[i] %></option>
+            <% } %>
           </select>
-          <div>
+
+          <div id="promedioYbtnTodos">
             <button class="button button" id="btnTodos">
               Todos los alumnos
             </button>
             <div class="float-right">
-              <span class="pln"> </span
+              <span class="pln"></span
               ><input
                 type="checkbox"
                 id="promedioCheck"
                 style="margin-left: 5px"
-              /><span class="pln"> </span
-              ><label class="label-inline" for="promedioCheck"
-                ><span class="pln">Promedio</span></label
-              ><span class="pln"> </span>
+              /><span class="pln"></span
+              ><label class="label-inline" for="promedioCheck">
+                <span class="pln">Promedio</span> </label
+              ><span class="pln"></span>
             </div>
           </div>
 
@@ -89,6 +94,10 @@
         </div>
       </main>
     </div>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/toastify-js"
+    ></script>
     <script src="/dashboard.js"></script>
   </body>
 </html>
