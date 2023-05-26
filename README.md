@@ -323,7 +323,6 @@ Uso
 
     Importa los módulos necesarios y configura el servidor Express en tu archivo principal:
 
-javascript
 
 const express = require("express");
 const app = express();
