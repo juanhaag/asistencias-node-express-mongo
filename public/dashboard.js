@@ -53,7 +53,7 @@ async function traerTodosPresentesConPromedio(token) {
   let areaTabla = document.getElementById("tablaAsistencias2");
   const numeroClases = document.getElementById("cantidadClases").value;
   const materia = document.getElementById("materiaField").value;
-  if (numeroClases =="") {
+  if (numeroClases =="" || numeroClases < 0) {
     Toastify({
       text: "Recuerda introducir la cantidad de clases para calcular promedio",
       className: "info",
@@ -91,11 +91,15 @@ async function traerTodosPresentesConPromedio(token) {
           </thead>
           <tbody>`;
         data.forEach((element) => {
+          let promedio = element.promedio;
+          if(promedio >100){
+            promedio = 100
+          }
           areaTabla.innerHTML += `
             <tr>
               <td>${element.nombre}</td>
               <td>${element.dni}</td>
-              <td>${element.promedio.toFixed(2)}%</td>
+              <td>${promedio.toFixed(2)}%</td>
             </tr>`;
         });
         areaTabla.innerHTML += `</tbody>`;
