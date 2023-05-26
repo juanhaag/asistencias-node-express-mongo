@@ -1,10 +1,6 @@
 # asistencias-node-express-mongo
 Documentación de la Aplicación Web
 Introducción
-
-Aquí puedes proporcionar una descripción general de la aplicación web, su propósito y los principales componentes que la componen.
-Índice
-
     Requisitos
     Funcionalidades
         Carga de Asistencia
