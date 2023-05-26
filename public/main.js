@@ -86,7 +86,7 @@ async function enviarData() {
     anioCursada: document.getElementById("yearField").value,
   };
   if (
-    dataAsistencia.nombre &&
+    /^[a-zA-Z]+$/.test(dataAsistencia.nombre) &&
     dataAsistencia.dni &&
     dataAsistencia.materia &&
     dataAsistencia.anioCursada
@@ -113,7 +113,7 @@ async function enviarData() {
     return response;
   } else {
     Toastify({
-      text: "LLENAR TODOS LOS CAMPOS!",
+      text: "LLENAR TODOS LOS CAMPOS CORRECTAMENTE!",
       className: "info",
       style: {
         background: "#8705d5",
@@ -131,22 +131,18 @@ document
 document.getElementById("btnBuscar").addEventListener("click", async () => {
   const dni = document.getElementById("buscarDni").value;
   let areaTabla = document.getElementById("tablaAsistencias");
-  const response = await fetch(
-    `/servicios/buscardni/${dni}`,
-    {
-      method: "get",
-      cache: "no-cache",
-      credentials: "same-origin",
-      headers: {
-        "Content-Type": "application/json",
-        // 'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      redirect: "follow",
-      referrerPolicy: "no-referrer",
-    }
-  );
+  const response = await fetch(`/servicios/buscardni/${dni}`, {
+    method: "get",
+    cache: "no-cache",
+    credentials: "same-origin",
+    headers: {
+      "Content-Type": "application/json",
+      // 'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    redirect: "follow",
+    referrerPolicy: "no-referrer",
+  });
   response.json().then((data) => {
-    
     if (data.length > 0) {
       areaTabla.innerHTML = `
         <thead>
