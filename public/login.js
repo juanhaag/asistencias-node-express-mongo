@@ -23,10 +23,10 @@ btnLogear.addEventListener("click", async (e) => {
       }
     );
     const token = await response.json();
-    console.log(token);
+    console.log("Token",token);
     //window.location.href = `http://http://200.58.98.21:3000/servicios/dashboard?token=${response}`;
     localStorage.setItem("token", token.token);
-    if (token != undefined) {
+    if (token.error==null) {
       window.location.href = `/servicios/dashboard?token=${token.token}`;
     }else{
       Toastify({
