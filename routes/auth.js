@@ -9,9 +9,11 @@ const schemaRegister = Joi.object({
   nombre: Joi.string().min(4).max(255).required(),
   email: Joi.string().min(6).max(255).required().email(),
   password: Joi.string().min(6).max(1024).required(),
-  cursos: Joi.array().items(Joi.object({
-    nombre: Joi.string().required()
-  }))
+  cursos: Joi.array().items(
+    Joi.object({
+      nombre: Joi.string().required(),
+    })
+  ),
 });
 const schemaLogin = Joi.object({
   email: Joi.string().min(4).max(255).required().email(),
@@ -53,7 +55,9 @@ router.post("/login", async (req, res) => {
   const { error } = schemaLogin.validate(req.body);
 
   console.log("-----------------------------\nIntento de login");
-  console.log(req.body);
+  const ip = req.ip; // Obtiene la dirección IP del cliente
+  const userAgent = req.get("User-Agent"); // Obtiene el agente del usuario
+  console.log(`IP: ${ip}, User Agent: ${userAgent}`);
   console.log("-----------------------------\nIntento de login");
   if (error) return res.status(400).json({ error: error.details[0].message });
   const profesor = await Profesor.findOne({ email: req.body.email });
