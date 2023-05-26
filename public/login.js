@@ -23,10 +23,20 @@ btnLogear.addEventListener("click", async (e) => {
       }
     );
     const token = await response.json();
-      console.log(token);
+    console.log(token);
     //window.location.href = `http://http://200.58.98.21:3000/servicios/dashboard?token=${response}`;
     localStorage.setItem("token", token.token);
-    window.location.href = `/servicios/dashboard?token=${token.token}`;
+    if (token != undefined) {
+      window.location.href = `/servicios/dashboard?token=${token.token}`;
+    }else{
+      Toastify({
+        text: "Ingrese los datos correctamente o contacte a algun administrador",
+        className: "info",
+        style: {
+          background: "#8705d5",
+        },
+      }).showToast();
+    }
   } catch (error) {
     console.log(error);
   }
