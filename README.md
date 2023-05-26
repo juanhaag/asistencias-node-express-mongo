@@ -16,10 +16,44 @@ Aquí puedes proporcionar una descripción general de la aplicación web, su pro
 
 Requisitos<a name="requisitos"></a>
 
-En esta sección, puedes describir los requisitos generales de la aplicación web, incluidos los lenguajes de programación, frameworks o bibliotecas necesarios.
+Requerimientos del sistema
+
+    Node.js: La aplicación está escrita en JavaScript y se ejecuta en el entorno de Node.js. Asegúrate de tener Node.js instalado en tu sistema.
+
+    NPM: NPM es el administrador de paquetes de Node.js y se utiliza para instalar las dependencias requeridas por la aplicación.
+
+Dependencias de la aplicación
+
+Estas son las dependencias que la aplicación utiliza y que deben ser instaladas:
+
+    express: Framework web utilizado para crear y gestionar el servidor HTTP.
+
+    body-parser: Middleware que analiza los datos enviados en el cuerpo de las solicitudes HTTP.
+
+    mongoose: Biblioteca de modelado de objetos MongoDB para Node.js que proporciona una interfaz para interactuar con la base de datos MongoDB.
+
+    dotenv: Módulo utilizado para cargar las variables de entorno desde un archivo .env en el entorno de desarrollo.
+
+    cors: Middleware utilizado para habilitar el intercambio de recursos de origen cruzado (CORS) en el servidor.
+
+    ejs: Motor de plantillas utilizado para renderizar las vistas en formato HTML.
+
+    jsonwebtoken: Biblioteca utilizada para generar y verificar tokens de autenticación JWT (JSON Web Tokens).
+
+    bcrypt: Biblioteca utilizada para el hash y la verificación de contraseñas.
+
+    jsonwebtoken: Biblioteca utilizada para generar y verificar tokens de autenticación JWT (JSON Web Tokens).
 Funcionalidades<a name="funcionalidades"></a>
 
-Aquí describirás las diferentes funcionalidades de la aplicación web.
+Autenticación y Autorización: La aplicación proporciona funcionalidades de autenticación y autorización para los usuarios. Los usuarios pueden registrarse con un correo electrónico y una contraseña, iniciar sesión en la aplicación y acceder a las características protegidas. Se utilizan tokens de autenticación JSON Web Tokens (JWT) para gestionar las sesiones de los usuarios y garantizar la seguridad de la aplicación.
+
+Gestión de Asistencias: Los profesores pueden realizar un seguimiento de las asistencias de los alumnos a través del panel de control. Pueden registrar la asistencia de los alumnos en diferentes materias y fechas específicas. Los datos de asistencia se almacenan en una base de datos MongoDB y se gestionan mediante operaciones de lectura y escritura.
+
+Dashboard del Profesor: El panel de control proporciona una vista personalizada para cada profesor. Los profesores pueden ver una lista de sus cursos y materias asociadas. Pueden acceder a informes y estadísticas sobre las asistencias de los alumnos, incluyendo el promedio de asistencia por alumno, generar un archivo CSV de las asistencias y buscar asistencias por número de identificación (DNI).
+
+Interfaz de Usuario Amigable: La aplicación web ofrece una interfaz de usuario intuitiva y fácil de usar. Los profesores pueden navegar por las diferentes secciones de la aplicación, interactuar con los elementos de la interfaz y realizar acciones como registrar asistencias, generar informes y buscar datos específicos.
+
+Exportación de Datos: Los profesores tienen la opción de exportar los datos de asistencias en formato CSV. Esto les permite realizar análisis posteriores o utilizar los datos en otras herramientas o sistemas externos.
 Carga de Asistencia<a name="carga-de-asistencia"></a>
 
 Esta función permite a los estudiantes cargar la asistencia. La página de inicio (index) incluirá un formulario dinámico que cambiará según el año seleccionado. Los detalles de implementación de este formulario se proporcionarán en la siguiente sección.
