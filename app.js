@@ -22,7 +22,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 //middlewares
-const verifyToken = require("./routes/verificarToken");
+const verifyToken = require("./middlewares/verificarToken");
 
 app.use("/servicios", require("./routes/Asistencia"));
 app.use("/servicios", require("./routes/Alumnos"));

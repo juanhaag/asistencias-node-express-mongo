@@ -51,7 +51,7 @@ document.getElementById("btnTodos").addEventListener("click", async () => {
 
 async function traerTodosPresentesConPromedio(token) {
   let areaTabla = document.getElementById("tablaAsistencias2");
-  const numeroClases = document.getElementById("cantidadClases").value;
+  const numeroClases = parseInt(document.getElementById("cantidadClases").value);
   const materia = document.getElementById("materiaField").value;
   if (numeroClases =="" || numeroClases < 0) {
     Toastify({
