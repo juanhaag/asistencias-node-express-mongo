@@ -16,6 +16,7 @@ router.get("/", async (req, res) => {
     materias: materias,
   });
 });
+
 router.get("/todos", async (req, res) => {
   let asistencias = [];
   let asistenciasMateriaUnica = [];
