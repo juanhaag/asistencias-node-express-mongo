@@ -36,7 +36,7 @@ function enviarMail(req,fecha) {
   });
   const mailOptions = {
     from: process.env.EMAIL_CORREO,
-    to: process.env.EMAIL_CORREO,
+    to: req.email,
     subject: `Asistencia ${req.materia} el dia  ${fecha} `,
     html: `
     <h1>Hola ${req.nombre} quedo registrada tu asistencia a ${req.materia} el dia ${fecha}</h1>
