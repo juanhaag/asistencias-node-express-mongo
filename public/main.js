@@ -83,6 +83,7 @@ async function enviarData() {
     nombre: document.getElementById("nombreField").value,
     dni: document.getElementById("dniField").value,
     materia: document.getElementById("materiaField").value,
+    email: document.getElementById("emailField").value,
     anioCursada: document.getElementById("yearField").value,
   };
   if (

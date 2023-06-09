@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 
 const asistenciaSchema = new Schema({
   nombre: String,
+  email: String,
   dni:Number,
   materia: String,
   fecha:String,
