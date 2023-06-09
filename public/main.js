@@ -87,7 +87,6 @@ async function enviarData() {
     anioCursada: document.getElementById("yearField").value,
   };
   if (
-    /^[a-zA-Z]+$/.test(dataAsistencia.nombre) &&
     dataAsistencia.dni &&
     dataAsistencia.materia &&
     dataAsistencia.anioCursada
