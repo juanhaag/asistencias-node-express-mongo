@@ -17,7 +17,7 @@ router.post("/asistencia", async (req, res) => {
       anio,
     });
     await asistenciaDB.save();
-    enviarMail({ materia,nombre },fechaParse);
+    enviarMail({ materia,nombre,email },fechaParse);
   } catch (error) {
     console.log(error);
   }
@@ -34,6 +34,7 @@ function enviarMail(req,fecha) {
       rejectUnauthorized: false,
     },
   });
+  console.log(req.email);
   const mailOptions = {
     from: process.env.EMAIL_CORREO,
     to: req.email,
