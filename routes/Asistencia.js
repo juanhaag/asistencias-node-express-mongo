@@ -34,7 +34,6 @@ function enviarMail(req,fecha) {
       rejectUnauthorized: false,
     },
   });
-  console.log(req.email);
   const mailOptions = {
     from: process.env.EMAIL_CORREO,
     to: req.email,
